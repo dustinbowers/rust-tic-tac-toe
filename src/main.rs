@@ -37,7 +37,7 @@ impl TicTacToe {
         };
         match col {
             0..=2 => {}
-            _ => return Err(format!("Invalid Col!")),
+            _ => return Err(format!("Invalid Column!")),
         };
         match self.board[(row * 3 + col) as usize] {
             State::Open => {}
@@ -66,7 +66,7 @@ impl TicTacToe {
                 && b[(i * 3) + 0] == b[(i * 3) + 1]
                 && b[(i * 3) + 1] == b[(i * 3) + 2]
             {
-                return Some(b[(i + 3) + 0]);
+                return Some(b[(i * 3) + 0]);
             }
             if b[(0 * 3) + i] != State::Open
                 && b[(0 * 3) + i] == b[(1 * 3) + i]
@@ -86,7 +86,7 @@ impl TicTacToe {
         None
     }
     fn print_board(&self) {
-        println!("Board:");
+        println!("\nBoard:\n");
         for i in 0..9 {
             print!("{}", self.board[i].string());
             if (i + 1) % 3 != 0 {
